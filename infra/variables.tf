@@ -87,42 +87,42 @@ variable "azure_websites_domain" {
   type = string
 }
 
-# variable "azure_portal_domain" {
-#   type = string
-# }
+variable "azure_portal_domain" {
+  type = string
+}
 
-# variable "azure_openai_domain" {
-#   type = string
-# }
+variable "azure_openai_domain" {
+  type = string
+}
 
-# variable "azure_openai_authority_host" {
-#   type = string
-# }
+variable "azure_openai_authority_host" {
+  type = string
+}
 
-# variable "azure_arm_management_api" {
-#   type = string
-# }
+variable "azure_arm_management_api" {
+  type = string
+}
 
-# variable "azure_ai_translation_domain" {
-#   type = string
-# }
+variable "azure_ai_translation_domain" {
+  type = string
+}
 
-# variable "azure_ai_text_analytics_domain" {
-#   type = string
-# }
+variable "azure_ai_text_analytics_domain" {
+  type = string
+}
 
-# variable "azure_search_domain" {
-#   type = string
-# }
+variable "azure_search_domain" {
+  type = string
+}
 
 variable "use_semantic_reranker" {
   type    = bool
   default = true
 }
 
-# variable "azure_storage_domain" {
-#   type = string
-# }
+variable "azure_storage_domain" {
+  type = string
+}
 
 variable "arm_template_schema_mgmt_api" {
   type        = string
@@ -164,22 +164,22 @@ variable "aadMgmtServicePrincipalId" {
 ////
 // Variables that are used for the Azure OpenAI service
 ////
-# variable "useExistingAOAIService" {
-#   type = bool
-# }
+variable "useExistingAOAIService" {
+  type = bool
+}
 
-# variable "azureOpenAIServiceName" {
-#   type = string
-# }
+variable "azureOpenAIServiceName" {
+  type = string
+}
 
-# variable "azureOpenAIResourceGroup" {
-#   type = string
-# }
+variable "azureOpenAIResourceGroup" {
+  type = string
+}
 
-# variable "azureOpenAIServiceKey" {
-#   type      = string
-#   sensitive = true
-# }
+variable "azureOpenAIServiceKey" {
+  type      = string
+  sensitive = true
+}
 
 variable "openAIServiceName" {
   type    = string
