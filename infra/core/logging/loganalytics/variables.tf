@@ -1,13 +1,13 @@
 variable "logAnalyticsName" {
-  type    = string
+  type = string
 }
 
 variable "applicationInsightsName" {
-  type    = string
+  type = string
 }
 
 variable "location" {
-  type    = string
+  type = string
 }
 
 variable "tags" {
@@ -21,7 +21,7 @@ variable "skuName" {
 }
 
 variable "resourceGroupName" {
-  type    = string
+  type = string
 }
 
 variable "logWorkbookName" {
@@ -34,4 +34,28 @@ variable "componentResource" {
   description = "The component resource"
   type        = string
   default     = ""
+}
+
+variable "is_secure_mode" {
+  type        = bool
+  default     = false
+  description = "value to enable secure mode, secure mode configures AMPLS endpoints"
+}
+
+variable "use_existing" {
+  type        = bool
+  default     = false
+  description = "value to enable use existing resources"
+}
+
+variable "existing_logAnalyticsName" {
+  type        = string
+  default     = ""
+  description = "The name of the existing log analytics workspace"
+}
+
+variable "existing_applicationInsightsName" {
+  type        = string
+  default     = ""
+  description = "The name of the existing application insights"
 }

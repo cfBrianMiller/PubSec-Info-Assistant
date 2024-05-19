@@ -9,18 +9,15 @@ variable "location" {
 }
 
 variable "resourceGroupName" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "tenantId" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "subscriptionId" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "buildNumber" {
@@ -76,7 +73,6 @@ variable "enableSharePointConnector" {
 variable "enableMultimedia" {
   type    = bool
   default = false
-  
 }
 ////
 // variables that can vary based on the Azure environment being targeted
@@ -88,45 +84,45 @@ variable "azure_environment" {
 }
 
 variable "azure_websites_domain" {
-  type        = string
-}
-
-variable "azure_portal_domain" {
   type = string
 }
 
-variable "azure_openai_domain" {
-  type = string
-}
+# variable "azure_portal_domain" {
+#   type = string
+# }
 
-variable "azure_openai_authority_host" {
-  type = string  
-}
+# variable "azure_openai_domain" {
+#   type = string
+# }
 
-variable "azure_arm_management_api" {
-  type        = string
-}
+# variable "azure_openai_authority_host" {
+#   type = string
+# }
 
-variable "azure_ai_translation_domain" {
-  type = string
-}
+# variable "azure_arm_management_api" {
+#   type = string
+# }
 
-variable "azure_ai_text_analytics_domain" {
-  type = string
-}
+# variable "azure_ai_translation_domain" {
+#   type = string
+# }
 
-variable "azure_search_domain" {
-  type = string
-}
+# variable "azure_ai_text_analytics_domain" {
+#   type = string
+# }
+
+# variable "azure_search_domain" {
+#   type = string
+# }
 
 variable "use_semantic_reranker" {
   type    = bool
   default = true
 }
 
-variable "azure_storage_domain" {
-  type = string
-}
+# variable "azure_storage_domain" {
+#   type = string
+# }
 
 variable "arm_template_schema_mgmt_api" {
   type        = string
@@ -160,7 +156,7 @@ variable "aadMgmtClientSecret" {
 }
 
 variable "aadMgmtServicePrincipalId" {
-  type = string
+  type    = string
   default = ""
 }
 ////
@@ -168,25 +164,25 @@ variable "aadMgmtServicePrincipalId" {
 ////
 // Variables that are used for the Azure OpenAI service
 ////
-variable "useExistingAOAIService" {
-  type = bool
-}
+# variable "useExistingAOAIService" {
+#   type = bool
+# }
 
-variable "azureOpenAIServiceName" {
-  type = string
-}
+# variable "azureOpenAIServiceName" {
+#   type = string
+# }
 
-variable "azureOpenAIResourceGroup" {
-  type = string
-}
+# variable "azureOpenAIResourceGroup" {
+#   type = string
+# }
 
-variable "azureOpenAIServiceKey" {
-  type      = string
-  sensitive = true
-}
+# variable "azureOpenAIServiceKey" {
+#   type      = string
+#   sensitive = true
+# }
 
 variable "openAIServiceName" {
-  type = string
+  type    = string
   default = ""
 }
 
@@ -248,15 +244,15 @@ variable "appServicePlanName" {
 
 variable "appServiceSkuSize" {
   description = "The size of the app service plan for the IA website. Must match with the tier value in appServiceSkuTier."
-  type = string
-  default = "S1"
+  type        = string
+  default     = "S1"
 }
 
 variable "appServiceSkuTier" {
   description = "The tier of the app service plan for the IA website. Must match with the size value in appServiceSkuSize."
-  type = string
-  default = "Standard"
-  
+  type        = string
+  default     = "Standard"
+
 }
 
 variable "enrichmentAppServicePlanName" {
@@ -266,14 +262,14 @@ variable "enrichmentAppServicePlanName" {
 
 variable "enrichmentAppServiceSkuSize" {
   description = "The size of the app service plan for the enrichment service. Must match with the tier value in enrichmentAppServiceSkuTier."
-  type = string
-  default = "P1v3"
+  type        = string
+  default     = "P1v3"
 }
 
 variable "enrichmentAppServiceSkuTier" {
   description = "The tier of the app service plan for the enrichment service. Must match with the size value in enrichmentAppServiceSkuSize."
-  type = string
-  default = "PremiumV3"
+  type        = string
+  default     = "PremiumV3"
 }
 
 variable "logAnalyticsName" {
@@ -303,14 +299,14 @@ variable "functionsAppName" {
 
 variable "functionsAppSkuSize" {
   description = "The size of the app service plan for the functions app. Must match with the tier value in functionsAppSkuTier."
-  type = string
-  default = "S2"
+  type        = string
+  default     = "S2"
 }
 
 variable "functionsAppSkuTier" {
   description = "The tier of the app service plan for the functions app. Must match with the size value in functionsAppSkuSize."
-  type = string
-  default = "Standard"
+  type        = string
+  default     = "Standard"
 }
 
 variable "videoIndexerName" {
@@ -489,7 +485,7 @@ variable "applicationtitle" {
 }
 
 variable "video_indexer_api_version" {
-  type = string
+  type    = string
   default = "2024-01-01"
 }
 
@@ -504,7 +500,29 @@ variable "maxCsvFileSize" {
 }
 
 variable "password_lifetime" {
-  type    = number
-  default = 365
-  description = "The number of days used as the lifetime for passwords"  
+  type        = number
+  default     = 365
+  description = "The number of days used as the lifetime for passwords"
+}
+
+variable "is_secure_mode" {
+  type        = bool
+  default     = true
+  description = "Flag to enable secure mode"
+}
+
+variable "use_existing_logging" {
+  type        = bool
+  default     = true
+  description = "Flag to enable use existing logging resources"
+}
+
+variable "hub_subscription_id" {
+  type        = string
+  description = "utilize a hub scription for logging resources"
+}
+
+variable "hub_logging_rg" {
+  type        = string
+  description = "The name of the resource group for the hub logging resources"
 }

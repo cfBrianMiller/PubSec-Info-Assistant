@@ -4,44 +4,44 @@ locals {
 
 
 resource "azurerm_storage_account" "storage" {
-  name                     = var.name
-  location                 = var.location
-  resource_group_name      = var.resourceGroupName
-  account_tier             = var.sku.name
-  account_replication_type = "LRS"
-  access_tier              = var.accessTier
-  min_tls_version          = var.minimumTlsVersion
-  enable_https_traffic_only = true
+  name                          = var.name
+  location                      = var.location
+  resource_group_name           = var.resourceGroupName
+  account_tier                  = var.sku.name
+  account_replication_type      = "LRS"
+  access_tier                   = var.accessTier
+  min_tls_version               = var.minimumTlsVersion
+  enable_https_traffic_only     = true
+  public_network_access_enabled = true
 
   network_rules {
-    default_action             = "Allow"
-    bypass                     = ["AzureServices"]
+    default_action = "Allow"
+    bypass         = ["AzureServices"]
   }
 
   tags = var.tags
 
-   blob_properties{
-    cors_rule{
-        allowed_headers = ["*"]
-        allowed_methods = ["GET", "PUT", "OPTIONS", "POST", "PATCH", "HEAD"]
-        allowed_origins = ["*"]
-        exposed_headers = ["*"]
-        max_age_in_seconds = 86400
-        }
-      
+  blob_properties {
+    cors_rule {
+      allowed_headers    = ["*"]
+      allowed_methods    = ["GET", "PUT", "OPTIONS", "POST", "PATCH", "HEAD"]
+      allowed_origins    = ["*"]
+      exposed_headers    = ["*"]
+      max_age_in_seconds = 86400
+    }
+
     delete_retention_policy {
       days = 1
-      }
-        
     }
+
+  }
 }
 
 
-
 resource "azurerm_storage_container" "container" {
-  count = length(var.containers)
-  name                  = var.containers[count.index]
-  storage_account_name  = azurerm_storage_account.storage.name
+  count                = length(var.containers)
+  name                 = var.containers[count.index]
+  storage_account_name = azurerm_storage_account.storage.name
 }
 
 resource "azurerm_storage_queue" "queue" {
@@ -68,22 +68,5 @@ resource "azurerm_storage_blob" "config" {
   storage_container_name = azurerm_storage_container.container[local.config_container_index].name
   type                   = "Block"
   source                 = "sp_config/config.json"
-}
-
-output "name" {
-  value = azurerm_storage_account.storage.name
-}
-
-output "primary_endpoints" {
-  value = azurerm_storage_account.storage.primary_blob_endpoint
-}
-
-output "id" {
-  value = azurerm_storage_account.storage.id
-}
-
-output "storage_account_access_key" {
-  value     = azurerm_storage_account.storage.primary_access_key
-  sensitive = true
 }
 

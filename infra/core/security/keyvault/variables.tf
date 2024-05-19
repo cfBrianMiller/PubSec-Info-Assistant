@@ -1,7 +1,7 @@
 
 
 variable "principalType" {
-  type = string
+  type    = string
   default = "ServicePrincipal"
   validation {
     condition     = contains(["Device", "ForeignGroup", "Group", "ServicePrincipal", "User"], var.principalType)
@@ -45,6 +45,26 @@ variable "spClientSecret" {
 }
 
 variable "resourceGroupName" {
+  type    = string
+  default = ""
+}
+
+variable "is_secure_mode" {
+  type    = bool
+  default = false
+}
+
+variable "privateEndpointSubnetId" {
+  type    = string
+  default = ""
+}
+
+variable "privateEndpointName" {
+  type    = string
+  default = ""
+}
+
+variable "privateEndpointNicName" {
   type    = string
   default = ""
 }

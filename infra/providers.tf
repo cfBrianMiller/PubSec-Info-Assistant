@@ -27,7 +27,20 @@ provider "azurerm" {
       recover_soft_deleted_key_vaults = true
     }
   }
-  environment = var.azure_environment == "AzureUSGovernment" ? "usgovernment" : "public"
+  environment     = var.azure_environment == "AzureUSGovernment" ? "usgovernment" : "public"
+  subscription_id = var.subscriptionId
+}
+
+provider "azurerm" {
+  alias           = "hub"
+  subscription_id = var.hub_subscription_id
+  environment     = var.azure_environment == "AzureUSGovernment" ? "usgovernment" : "public"
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy    = true
+      recover_soft_deleted_key_vaults = true
+    }
+  }
 }
 
 provider "azuread" {
